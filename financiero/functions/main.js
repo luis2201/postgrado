@@ -61,7 +61,7 @@ if(document.getElementById("tbLista")) {
                         })
                         .then(data => {
                             let info = data;
-
+console.log(info)
                             switch (dataAction) {
                                 case 'login':
                                     if (info) {
@@ -92,6 +92,7 @@ if(document.getElementById("tbLista")) {
                                             buttons: {
                                                 close: function () {
                                                     form.reset();
+                                                    window.location.reload();
                                                 }
                                             }
                                         });

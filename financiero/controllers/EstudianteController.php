@@ -115,13 +115,17 @@
             $EstudianteID = Main::limpiar_cadena($_POST["EstudianteID"]);
             $MaestriaID = Main::limpiar_cadena($_POST["MaestriaID"]);
             
+            $PeriodoID = Main::decryption($PeriodoID);
+            $EstudianteID = Main::decryption($EstudianteID);
+            $MaestriaID = Main::decryption($MaestriaID);
+
             $param = [
                 ":PeriodoID" => $PeriodoID,
                 ":EstudianteID" => $EstudianteID,
                 ":MaestriaID" => $MaestriaID
             ];
 
-            $resp = Maestria::insert($param);
+            $resp = Matricula::insert($param);
 
             echo json_encode($resp);
         }

@@ -10,6 +10,7 @@ include_once "models/Usuario.php";
 include_once "models/Estudiante.php";
 include_once "models/Periodo.php";
 include_once "models/Maestria.php";
+include_once "models/Matricula.php";
 
 $controller = ucfirst($_GET['controller']);
 

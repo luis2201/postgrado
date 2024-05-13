@@ -31,6 +31,6 @@
         <script src="https://cdn.datatables.net/buttons/3.0.2/js/buttons.print.min.js"></script>
         <!-- JS del Sitio -->
         <script src="<?php echo LOCAL; ?>public/js/scripts.js?v=1.0.0"></script>
-        <script src="<?php echo DIR; ?>functions/main.js?v=1.3.0"></script>
+        <script src="<?php echo DIR; ?>functions/main.js?v=1.3.1"></script>
     </body>
 </html>
