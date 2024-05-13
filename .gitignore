@@ -1,0 +1,7 @@
+.vscode/
+
+financiero/config/
+financiero/models/DB.php
+financiero/utils/
+financiero/.htaccess
+financiero/routes.php
