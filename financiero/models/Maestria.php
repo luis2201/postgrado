@@ -7,7 +7,7 @@
         {
             $db = new DB();
 
-            $prepare = $db->prepare("SELECT * FROM Maestria;");
+            $prepare = $db->prepare("SELECT * FROM Maestria WHERE EstadoMaestria = 1;");
             $prepare->execute();
 
             return $prepare->fetchAll(PDO::FETCH_CLASS, Maestria::class);

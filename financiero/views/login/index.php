@@ -25,14 +25,16 @@
                                 <div class="card shadow-lg border-0 rounded-lg mt-5">
                                     <div class="card-header img-responsive"><img src="<?php echo LOCAL; ?>public/img/logo.png" style="width:100%" alt="postgrado-itsup"></div>
                                     <div class="card-body">
-                                        <form class="form" action="<?php echo DIR; ?>login/validate" method="post" data-action="login" enctype="multipart/form-data" autocomplete="off">
+                                        <form class="needs-validation" action="<?php echo DIR; ?>login/validate" method="post" data-action="login" enctype="multipart/form-data" autocomplete="off" novalidate>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="NombreUsuario" name="NombreUsuario" type="text" placeholder="name@example.com" />
+                                                <input class="form-control" id="NombreUsuario" name="NombreUsuario" type="text" placeholder="name@example.com" aria-describedby="inputGroupPrepend" required/>
                                                 <label for="NombreUsuario">Usuario</label>
+                                                <div class="invalid-feedback">Ingrese usuario</div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="ContrasenaUsuario" name="ContrasenaUsuario" type="password" placeholder="Password" />
+                                                <input class="form-control" id="ContrasenaUsuario" name="ContrasenaUsuario" type="password" placeholder="Password" aria-describedby="inputGroupPrepend" required/>
                                                 <label for="ContrasenaUsuario">Contraseña</label>
+                                                <div class="invalid-feedback">Ingrese contraseña</div>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <button type="submit" class="btn btn-primary" style="background-color:#c69c4e;border-color:#c69c4e;width:100%;">Login</button>
@@ -71,7 +73,6 @@
         <script src="<?php echo LOCAL; ?>public/jquery-confirm/dist/jquery-confirm.min.js"></script>
         <!-- JS del Sitio -->
         <script src="<?php echo LOCAL; ?>public/js/scripts.js?v=1.0.0"></script>
-        <script src="<?php echo DIR; ?>functions/login.js?v=1.0.4"></script>
-        <script src="<?php echo DIR; ?>functions/main.js?v=1.0.7"></script>
+        <script src="<?php echo DIR; ?>functions/main.js?v=1.1.3"></script>
     </body>
 </html>

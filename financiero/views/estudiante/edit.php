@@ -10,7 +10,7 @@
 </div>
 
 <div class="card mb-4">
-    <form class ="form" action="<?php echo DIR; ?>estudiante/update" method="post" data-action="update" enctype="multipart/form-data" autocomplete="off">
+    <form class ="needs-validation" action="<?php echo DIR; ?>estudiante/update" method="post" data-action="update" enctype="multipart/form-data" autocomplete="off" novalidate>
     <?php foreach($estudiante as $row): ?>
         <input type="hidden" id="EstudianteID" name="EstudianteID" value="<?php echo Main::encryption($row->EstudianteID); ?>">
         <div class="card-header">
@@ -20,20 +20,23 @@
             <div class="row mt-2">
                 <div class="col-6">
                     <label for="TipoIdentificacion">Tipo de Identificación</label>
-                    <select id="TipoIdentificacion" name="TipoIdentificacion" class="form-select">
+                    <select id="TipoIdentificacion" name="TipoIdentificacion" class="form-select" aria-describedby="inputGroupPrepend" required>
                         <option value="Cédula" <?php echo ($row->TipoIdentificacion == 'Cédula')?'selected':''; ?>>Cédula</option>
                         <option value="Pasaporte" <?php echo ($row->TipoIdentificacion == 'Pasaporte')?'selected':''; ?>>Pasaporte</option>
                     </select>
+                    <div class="invalid-feedback">Ingrese Número de Identificación</div>
                 </div>
                 <div class="col-6">
                     <label for="NumeroIdentificacion">Número de Identificación (*)</label>
-                    <input type="text" id="NumeroIdentificacion" name="NumeroIdentificacion" class="form-control" onkeypress="soloNumeros(event)" maxlength="25" value="<?php echo $row->NumeroIdentificacion; ?>">
+                    <input type="text" id="NumeroIdentificacion" name="NumeroIdentificacion" class="form-control" onkeypress="soloNumeros(event)" maxlength="25" value="<?php echo $row->NumeroIdentificacion; ?>" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">Ingrese Número de Identificación</div>
                 </div>
             </div>
             <div class="row mt-2">
                 <div class="col-6">
                     <label for="Nombre1">Primer Nombre (*)</label>
-                    <input type="text" id="Nombre1" name="Nombre1" class="form-control" oninput="soloLetrasMayusculas(event)" maxlength="25" value="<?php echo $row->Nombre1; ?>">
+                    <input type="text" id="Nombre1" name="Nombre1" class="form-control" oninput="soloLetrasMayusculas(event)" maxlength="25" value="<?php echo $row->Nombre1; ?>" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">Ingrese Nombre</div>
                 </div>
                 <div class="col-6">
                     <label for="Nombre2">Segundo Nombre</label>
@@ -43,7 +46,8 @@
             <div class="row mt-2">
                 <div class="col-6">
                     <label for="Apellido1">Primer Apellido (*)</label>
-                    <input type="text" id="Apellido1" name="Apellido1" class="form-control" oninput="soloLetrasMayusculas(event)" maxlength="25" value="<?php echo $row->Apellido1; ?>">
+                    <input type="text" id="Apellido1" name="Apellido1" class="form-control" oninput="soloLetrasMayusculas(event)" maxlength="25" value="<?php echo $row->Apellido1; ?>" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">Ingrese Apellido</div>
                 </div>
                 <div class="col-6">
                     <label for="Apellido2">Segundo Apellido</label>
@@ -53,11 +57,13 @@
             <div class="row mt-2 mb-2">
                 <div class="col-6">
                     <label for="Telefono">Teléfono (*)</label>
-                    <input type="text" id="Telefono" name="Telefono" class="form-control" onkeypress="soloNumeros(event)" maxlength="10" value="<?php echo $row->Telefono; ?>">
+                    <input type="text" id="Telefono" name="Telefono" class="form-control" onkeypress="soloNumeros(event)" maxlength="10" value="<?php echo $row->Telefono; ?>" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">Ingrese Número de Teléfono</div>
                 </div>
                 <div class="col-6">
                     <label for="Correo">Correo Electrónico (*)</label>
-                    <input type="text" id="Correo" name="Correo" class="form-control" maxlength="255" value="<?php echo $row->Correo; ?>">
+                    <input type="text" id="Correo" name="Correo" class="form-control" maxlength="255" value="<?php echo $row->Correo; ?>" aria-describedby="inputGroupPrepend" required>
+                    <div class="invalid-feedback">Ingrese Correo Electrónico</div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">Guardar</button>

@@ -10,7 +10,7 @@ class LoginController
 
     public function validate()
     {
-        $validate = false;
+        $flag = false;
 
         $NombreUsuario = Main::limpiar_cadena($_POST["NombreUsuario"]);
         $ContrasenaUsuario = Main::limpiar_cadena($_POST["ContrasenaUsuario"]);
@@ -20,6 +20,7 @@ class LoginController
         $param = [":NombreUsuario" => $NombreUsuario, ":ContrasenaUsuario" => $ContrasenaUsuario];
         $resp = Usuario::login($param);
 
+
         if(count($resp) > 0){
             foreach ($resp as $row) {
                 $_SESSION['UsuarioID'] = $row->UsuarioID;
@@ -28,10 +29,10 @@ class LoginController
                 $_SESSION['NombreUsuario'] = $row->NombreUsuario;
             }
 
-            $validate = true;
+            $flag = true;
         } 
-
-        echo json_encode($validate);
+        
+        echo json_encode($flag);
     }
 
     public function logout()

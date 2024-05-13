@@ -38,7 +38,7 @@
                     <td class="text-center"><?php echo $row->Correo; ?></td>
                     <td>
                         <div class="btn-group" role="group" aria-label="Basic example">
-                            <form class="form" action="estudiante/delete" method="post" data-action="delete" enctype="multipart/form-data">
+                            <form class="needs-validation" action="estudiante/delete" method="post" data-action="delete" enctype="multipart/form-data" novalidate>
                                 <input type="hidden" id="EstudianteID" name="EstudianteID" value="<?php echo Main::encryption($row->EstudianteID); ?>">
                                 <button class="btn text-danger"><i class="fa-solid fa-trash-can"></i></button>
                             </form>
