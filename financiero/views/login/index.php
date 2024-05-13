@@ -72,6 +72,6 @@
         <!-- JS del Sitio -->
         <script src="<?php echo LOCAL; ?>public/js/scripts.js?v=1.0.0"></script>
         <script src="<?php echo DIR; ?>functions/login.js?v=1.0.4"></script>
-        <script src="<?php echo DIR; ?>functions/main.js?v=1.0.5"></script>
+        <script src="<?php echo DIR; ?>functions/main.js?v=1.0.7"></script>
     </body>
 </html>

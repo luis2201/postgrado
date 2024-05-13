@@ -1,10 +1,12 @@
-new DataTable('#tbLista', {
-    layout: {
-        topStart: {
-            buttons: ['excel', 'pdf', 'print']
+if(document.getElementById("tbLista")) {
+    new DataTable('#tbLista', {
+        layout: {
+            topStart: {
+                buttons: ['excel', 'pdf', 'print']
+            }
         }
-    }
-});
+    });    
+}
 
 var forms = document.querySelectorAll(".form");
 forms.forEach(function(form) {
