@@ -1,5 +1,7 @@
+var miDataTable;
+
 if(document.getElementById("tbLista")) {
-    new DataTable('#tbLista', {
+    miDataTable = new DataTable('#tbLista', {
         layout: {
             topStart: {
                 buttons: ['excel', 'pdf', 'print']
@@ -61,7 +63,7 @@ if(document.getElementById("tbLista")) {
                         })
                         .then(data => {
                             let info = data;
-console.log(info)
+
                             switch (dataAction) {
                                 case 'login':
                                     if (info) {
@@ -143,6 +145,16 @@ console.log(info)
 
                                 case 'delete':
                                     window.location.reload();
+                                    break;
+                                
+                                case 'select':
+                                    document.getElementById("tabla").innerHTML = info;
+
+                                    $('#tbNomina').DataTable({
+                                        dom: 'Bfrtip',
+                                        //buttons: ['excel', 'pdf', 'print']
+                                    });
+
                                     break;
                             }
                         })

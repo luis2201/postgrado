@@ -39,7 +39,7 @@
             </div>
             <div class="row mt-2">
                 <div class="col-4">
-                    <label for="PeriodoID">Periodo</label>
+                    <label for="PeriodoID">Periodo Académico</label>
                     <select id="PeriodoID" name="PeriodoID" class="form-select"  aria-describedby="inputGroupPrepend" required>
                         <?php 
                             foreach($periodo as $periodos):
@@ -73,7 +73,7 @@
             <thead class="bg-secondary text-white">
                 <tr>
                     <th class="text-center">#</th>
-                    <th class="text-center">Periodo</th>
+                    <th class="text-center">Periodo Académico</th>
                     <th class="text-center">Maestría</th>
                 </tr>
             </thead>
