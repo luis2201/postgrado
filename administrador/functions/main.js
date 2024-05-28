@@ -185,6 +185,11 @@ function resetContrasena(EstudianteID)
                 },
         success : function (result){
             document.getElementById("tabla").innerHTML = JSON.parse(result);
+
+            $('#tbNomina').DataTable({
+                dom: 'Bfrtip',
+                //buttons: ['excel', 'pdf', 'print']
+            });
         }
         
     })
