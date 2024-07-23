@@ -1,0 +1,16 @@
+.vscode/
+
+##financiero
+financiero/config/
+financiero/models/DB.php
+
+financiero/config/
+financiero/models/DB.php
+
+##Secretaria
+secretaria/config/
+secretaria/models/DB.php
+
+##Estudiante
+estudiante/config/
+estudiante/models/DB.php
