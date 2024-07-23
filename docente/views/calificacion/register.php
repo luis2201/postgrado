@@ -18,6 +18,7 @@
         <?php endforeach; ?>
         <div class="row">
             <div class="col-12">                    
+                <input type="hidden" id="ruta" name="ruta" value="<?php echo DIR.'calificacion/save'; ?>">
                 <input type="hidden" id="DocenteModuloID" name="DocenteModuloID" value="<?php echo $_GET['id']; ?>">
                 <table class="table table-condensed table-hover table-striped w-100">
                     <thead class="bg-primary text-white text-center" style="font-size:0.8vw">

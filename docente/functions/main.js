@@ -63,7 +63,7 @@ if(document.getElementById("tbLista")) {
                         })
                         .then(data => {
                             let info = data;
-console.log(info)
+
                             switch (dataAction) {
                                 case 'login':
                                     if (info) {
@@ -187,13 +187,14 @@ function soloLetrasMayusculas(event) {
 
 let previousValues = {};
 
-function actualizarTotal(matriculaID) {
-    let docencia = parseFloat(document.getElementById(`Docencia-${matriculaID}`).value) || 0;
-    let practicas = parseFloat(document.getElementById(`Practicas-${matriculaID}`).value) || 0;
-    let actividades = parseFloat(document.getElementById(`Actividades-${matriculaID}`).value) || 0;
-    let resultados = parseFloat(document.getElementById(`Resultados-${matriculaID}`).value) || 0;
+function actualizarTotal(MatriculaID) {
+    let docencia = parseFloat(document.getElementById(`Docencia-${MatriculaID}`).value) || 0;
+    let practicas = parseFloat(document.getElementById(`Practicas-${MatriculaID}`).value) || 0;
+    let actividades = parseFloat(document.getElementById(`Actividades-${MatriculaID}`).value) || 0;
+    let resultados = parseFloat(document.getElementById(`Resultados-${MatriculaID}`).value) || 0;
     let total = docencia + practicas + actividades + resultados;
-    document.getElementById(`Total-${matriculaID}`).value = total.toFixed(2);
+    document.getElementById(`Total-${MatriculaID}`).value = total.toFixed(2);
+    return total.toFixed(2);
 }
 
 function limitarDecimales(event, maxValue) {
@@ -213,8 +214,11 @@ function formatearDecimales(event, maxValue) {
     } else {
         event.target.value = valor.toFixed(2);
         if (previousValues[event.target.id] !== event.target.value) {
+            let DocenteModuloID = document.getElementById("DocenteModuloID").value;
+            let MatriculaID = event.target.id.split('-')[1];
+            let total = actualizarTotal(MatriculaID);
             mostrarToast();
-            enviarDatos(event.target.id, event.target.value);
+            enviarDatos(DocenteModuloID, event.target.id, event.target.value, total);
         }
     }
 }
@@ -229,13 +233,18 @@ function guardarValorAnterior(event) {
     previousValues[event.target.id] = event.target.value;
 }
 
-function enviarDatos(id, valor) {
-    const [campo, matriculaID] = id.split('-');
+function enviarDatos(DocenteModuloID, id, valor, total) {
+    const URL = document.getElementById("ruta").value;
+    const [campo, MatriculaID] = id.split('-');
     const data = {
-        matriculaID: matriculaID
+        DocenteModuloID: DocenteModuloID,
+        MatriculaID: MatriculaID,
+        Campo: campo,
+        Valor: valor,
+        Total: total
     };
 
-    fetch('calificacion/save', {
+    fetch(URL, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'

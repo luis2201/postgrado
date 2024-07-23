@@ -44,9 +44,16 @@
             $data = json_decode(file_get_contents('php://input'));
 
             $DocenteModuloID = Main::limpiar_cadena($data->DocenteModuloID);
+            $MatriculaID = Main::limpiar_cadena($data->MatriculaID);
+            $Campo = Main::limpiar_cadena($data->Campo);
+            $Valor = Main::limpiar_cadena($data->Valor);
+            $Total = Main::limpiar_cadena($data->Total);
 
-            $param = [":DocenteModuloID" => $DocenteModuloID];
+            $DocenteModuloID = Main::decryption($DocenteModuloID);
 
+            $param = [":DocenteModuloID" => $DocenteModuloID, ":MatriculaID" => $MatriculaID, ":Campo" => $Campo, ":Valor" => $Valor, ":Total" => $Total];
+            // $resp = Calificacion::Save($param);
+            
             echo json_encode($param);
         }
 
