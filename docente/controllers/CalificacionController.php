@@ -48,10 +48,11 @@
             $Campo = Main::limpiar_cadena($data->Campo);
             $Valor = Main::limpiar_cadena($data->Valor);
             $Total = Main::limpiar_cadena($data->Total);
+            $Asistencia = Main::limpiar_cadena($data->Asistencia);
 
             $DocenteModuloID = Main::decryption($DocenteModuloID);
 
-            $param = [":DocenteModuloID" => $DocenteModuloID, ":MatriculaID" => $MatriculaID, ":Campo" => $Campo, ":Valor" => $Valor, ":Total" => $Total];
+            $param = [":DocenteModuloID" => $DocenteModuloID, ":MatriculaID" => $MatriculaID, ":Campo" => $Campo, ":Valor" => $Valor, ":Total" => $Total, ":Asistencia" => $Asistencia];
             $resp = Calificacion::Save($param);
             
             echo json_encode($resp);

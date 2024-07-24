@@ -6,17 +6,19 @@ BEGIN
             'INSERT INTO Calificacion (DocenteModuloID, MatriculaID, ', pCampo, ', Total) ',
             'VALUES (?, ?, ?, ?)'
         );
+
+            PREPARE stmt FROM sqlQuery;
+
+            EXECUTE stmt USING pDocenteModuloID, pMatriculaID, pValor, pTotal;
     ELSE
         SET sqlQuery = CONCAT(
-            'UPDATE Calificacion SET ', pCampo, ' = ?, Total = ?
-             WHERE DocenteModuloID = ?
-             AND MatriculaID = ?;'
+            'UPDATE Calificacion SET ', pCampo, ' = ?, Total = ?\r\n             WHERE DocenteModuloID = ?\r\n             AND MatriculaID = ?;'
         );
+
+        PREPARE stmt FROM sqlQuery;
+
+        EXECUTE stmt USING pValor, pTotal, pDocenteModuloID, pMatriculaID;
     END IF;
-
-    PREPARE stmt FROM sqlQuery;
-
-    EXECUTE stmt USING pValor, pTotal, pDocenteModuloID, pMatriculaID;
 
     DEALLOCATE PREPARE stmt;
 END
