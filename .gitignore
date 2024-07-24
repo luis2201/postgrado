@@ -11,6 +11,10 @@ financiero/models/DB.php
 secretaria/config/
 secretaria/models/DB.php
 
+##Docente
+docente/config/
+docente/models/DB.php
+
 ##Estudiante
 estudiante/config/
 estudiante/models/DB.php
