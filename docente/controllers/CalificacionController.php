@@ -52,9 +52,9 @@
             $DocenteModuloID = Main::decryption($DocenteModuloID);
 
             $param = [":DocenteModuloID" => $DocenteModuloID, ":MatriculaID" => $MatriculaID, ":Campo" => $Campo, ":Valor" => $Valor, ":Total" => $Total];
-            // $resp = Calificacion::Save($param);
+            $resp = Calificacion::Save($param);
             
-            echo json_encode($param);
+            echo json_encode($resp);
         }
 
     }

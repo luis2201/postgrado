@@ -11,6 +11,7 @@ include_once "models/Estudiante.php";
 include_once "models/Periodo.php";
 include_once "models/Docentemodulo.php";
 include_once "models/Maestria.php";
+include_once "models/Calificacion.php";
 
 $controller = ucfirst($_GET['controller']);
 
