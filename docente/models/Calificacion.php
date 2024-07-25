@@ -7,10 +7,9 @@
         {
             $db = new DB();
 
-            $prepare = $db->prepare("CALL sp_calificacion_save(:DocenteModuloID, :MatriculaID, :Campo, :Valor, :Total: Asistencia)");
-            $prepare->execute($params);
-
-            return $prepare->fetchAll(PDO::FETCH_CLASS, Calificacion::class);
+            $prepare = $db->prepare("CALL sp_calificacion_save(:DocenteModuloID, :MatriculaID, :Campo, :Valor, :Total, :Asistencia)");
+            
+            return $prepare->execute($params);
         }
 
         public static function findCalificacionMatriculaModuloID($params)

@@ -48,7 +48,7 @@
             $Campo = Main::limpiar_cadena($data->Campo);
             $Valor = Main::limpiar_cadena($data->Valor);
             $Total = Main::limpiar_cadena($data->Total);
-            $Asistencia = Main::limpiar_cadena($data->Asistencia);
+            $Asistencia = (Main::limpiar_cadena($data->Asistencia) == '')?0:Main::limpiar_cadena($data->Asistencia);
 
             $DocenteModuloID = Main::decryption($DocenteModuloID);
 

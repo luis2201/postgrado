@@ -217,8 +217,10 @@ function formatearDecimales(event, maxValue) {
             let DocenteModuloID = document.getElementById("DocenteModuloID").value;
             let MatriculaID = event.target.id.split('-')[1];
             let total = actualizarTotal(MatriculaID);
+            let asistencia = document.getElementById("Asistencia-" + event.target.id.split('-')[1]).value;
+
             mostrarToast();
-            enviarDatos(DocenteModuloID, event.target.id, event.target.value, total);
+            enviarDatos(DocenteModuloID, event.target.id, event.target.value, total, asistencia);
         }
     }
 }
@@ -233,7 +235,7 @@ function guardarValorAnterior(event) {
     previousValues[event.target.id] = event.target.value;
 }
 
-function enviarDatos(DocenteModuloID, id, valor, total) {
+function enviarDatos(DocenteModuloID, id, valor, total, asistencia) {
     const URL = document.getElementById("ruta").value;
     const [campo, MatriculaID] = id.split('-');
     const data = {
@@ -241,7 +243,8 @@ function enviarDatos(DocenteModuloID, id, valor, total) {
         MatriculaID: MatriculaID,
         Campo: campo,
         Valor: valor,
-        Total: total
+        Total: total,
+        Asistencia: asistencia
     };
 
     fetch(URL, {
