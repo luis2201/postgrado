@@ -29,7 +29,7 @@
                                 <td><?php echo $row->NombreMaestria; ?></td>
                                 <td class="text-center w-10">
                                     <a href="calificacion/register/<?php echo Main::encryption($row->DocenteModuloID)   ; ?>"><i class="fa-solid fa-file-pen text-success"></i></a>
-                                    <a href="calificacion/print/<?php echo Main::encryption($row->DocenteModuloID)  ; ?>" target="_blank"><i class="fa-solid fa-file-pdf text-primary"></i></a>
+                                    <a href="calificacion/reporte/<?php echo Main::encryption($row->DocenteModuloID)  ; ?>" target="_blank"><i class="fa-solid fa-file-pdf text-primary"></i></a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

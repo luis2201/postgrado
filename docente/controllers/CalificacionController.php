@@ -58,4 +58,9 @@
             echo json_encode($resp);
         }
 
+        public function reporte()
+        {
+            view("calificacion.reporte", []);
+        }
+
     }

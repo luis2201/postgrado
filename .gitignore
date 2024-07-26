@@ -1,5 +1,9 @@
 .vscode/
 
+##administrador
+administrador/config/
+administrador/models/DB.php
+
 ##financiero
 financiero/config/
 financiero/models/DB.php
