@@ -18,6 +18,7 @@ secretaria/models/DB.php
 ##Docente
 docente/config/
 docente/models/DB.php
+docente/dompdf
 
 ##Estudiante
 estudiante/config/

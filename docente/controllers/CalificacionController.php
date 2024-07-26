@@ -60,7 +60,23 @@
 
         public function reporte()
         {
-            view("calificacion.reporte", []);
+            $periodo = Periodo::findPeriodoActivo();
+            foreach($periodo as $row){
+                $PeriodoID = $row->PeriodoID;
+            }
+
+            $DocenteModuloID = Main::decryption($_GET["id"]);
+
+            $param = [":DocenteModuloID" => $DocenteModuloID];
+            $datosmaestriamodulo = Maestria::findDatosMaestriaModulo($param);
+            foreach($datosmaestriamodulo as $row){
+                $MaestriaID = $row->MaestriaID;
+            }
+
+            $param = ["PeriodoID" =>$PeriodoID, "MaestriaID" => $MaestriaID];
+            $estudiantes = Maestria::findEstudiantesMaestriaID($param);
+
+            view("calificacion.reporte", ["estudiantes" => $estudiantes]);
         }
 
     }

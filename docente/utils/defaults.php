@@ -8,7 +8,7 @@ if (!function_exists("view")) {
       }
       $vista = explode('.', $nombreVista); // [0] => tareas, [1] => index
 
-      if($vista[0]=='login' || $vista[0]=='error') {
+      if($vista[0]=='login' || $vista[0]=='error' || ($vista[0] == 'calificacion' && $vista[1] == 'reporte')) {
         include_once "./views/{$vista[0]}/$vista[1].php";
         
       } else{

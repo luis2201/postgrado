@@ -32,7 +32,6 @@
                             <th class="text-wrap">Resultados (30%)</th>
                             <th class="text-wrap">Total</th>
                             <th class="text-wrap">Asistencia 100%</th>
-                            <th class="text-wrap">Observación</th>
                         </tr>
                     </thead>
                     <tbody style="font-size:0.8vw">
@@ -80,11 +79,6 @@
                                 </td>
                                 <td class="text-center border" style="width:90px;">
                                     <input type="number" step="0.01" id="Asistencia-<?php echo $row->MatriculaID; ?>" name="Asistencia-<?php echo $row->MatriculaID; ?>" class="border-bottom border-dark text-center" style="border-style:none;width:90px;" min="0" max="100" oninput="limitarDecimales(event, 100); actualizarTotal(<?php echo $row->MatriculaID; ?>)" onfocus="guardarValorAnterior(event)" onblur="formatearDecimales(event, 100)" value="<?php echo $Asistencia; ?>">
-                                </td>
-                                <td class="text-center border" style="width:90px;">
-                                    <?php
-                                        echo ($Total >=70)?'<span class="text-success fw-bold">APROBADO</span>':'<span class="text-danger fw-bold">REPROBADO</span>';
-                                    ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

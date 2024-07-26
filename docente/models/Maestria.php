@@ -44,4 +44,20 @@
             return $prepare->fetchAll(PDO::FETCH_CLASS, Maestria::class);
         }
 
+        public static function findDatosMaestriaModuloDocente($params)
+        {
+            $db = new DB();
+
+            $prepare = $db->prepare("SELECT DM.DocenteModuloID, T.MaestriaID, T.NombreMaestria, M.ModuloID, M.NombreModulo, D.NombreDocente
+                                    FROM DocenteModulo DM 
+                                        INNER JOIN Modulo M ON DM.ModuloID = M.ModuloID
+                                        INNER JOIN Maestria T ON M.MaestriaID =  T.MaestriaID
+                                        INNER JOIN Docente D ON DM.DocenteID = D.DocenteID
+                                    WHERE DM.DocenteModuloID = :DocenteModuloID");
+
+            $prepare->execute($params);
+
+            return $prepare->fetchAll(PDO::FETCH_CLASS, Maestria::class);
+        }
+
     }
