@@ -55,6 +55,8 @@
                             <div class="collapse" id="collapseReportes" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link" href="<?php echo DIR; ?>reporte/listaporoferta">Listas por Oferta Académica</a>
+                                    <a class="nav-link" href="<?php echo DIR; ?>reporte/calificacionesindividuales">Calificaciones Individuales</a>
+                                    <a class="nav-link" href="<?php echo DIR; ?>reporte/calificacionesgrupales">Calificaciones Grupales</a>
                                 </nav>
                             </div>
                         </div>
