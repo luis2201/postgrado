@@ -63,7 +63,7 @@ if (document.getElementById("tbLista")) {
                         })
                         .then(data => {
                             let info = data;
-                            console.log(info);
+                            
                             switch (dataAction) {
                                 case 'login':
                                     if (info) {
@@ -206,6 +206,7 @@ cmbMaestriaID.addEventListener("change", function(){
     })
     .then(response => response.json())
     .then(data => {
+        console.log(data)
         document.getElementById("ModuloID").innerHTML = data; 
     })
     .catch(error => {
@@ -213,3 +214,13 @@ cmbMaestriaID.addEventListener("change", function(){
     });
   
 });
+
+function calIndividual(EstudianteID)
+{
+    const calificacionModal = new bootstrap.Modal(document.getElementById('calificacionModal'), {
+        backdrop : 'static'
+    })
+
+    calificacionModal.show(M)
+
+}

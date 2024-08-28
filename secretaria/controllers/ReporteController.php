@@ -56,7 +56,7 @@
             $periodo = Periodo::findPeriodoActivo();
             $maestria = Maestria::findMaestriaAll();
 
-            view('reporte.calificaciones', ["periodo" => $periodo, "maestria" => $maestria]);
+            view('reporte.calificacionesindividuales', ["periodo" => $periodo, "maestria" => $maestria]);
         }
 
         public function findestudiantesreporteindividual()
@@ -87,7 +87,7 @@
                             <td class="text-center" style="width:10%">'.$row->NumeroIdentificacion.'</td>
                             <td>'.$row->Apellidos.'</td>
                             <td>'.$row->Nombres.'</td>                            
-                            <td  class="text-center" style="width:25%"><button id="'.$row->Correo.'"><i class="fa-solid fa-eye"></i></button></td>
+                            <td  class="text-center" style="width:25%"><button id="'.$row->EstudianteID.'" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></button></td>
                           </tr>';
             }
 
