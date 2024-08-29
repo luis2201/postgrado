@@ -206,7 +206,7 @@ cmbMaestriaID.addEventListener("change", function(){
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
+        
         document.getElementById("ModuloID").innerHTML = data; 
     })
     .catch(error => {
@@ -215,12 +215,38 @@ cmbMaestriaID.addEventListener("change", function(){
   
 });
 
-function calIndividual(EstudianteID)
+function calIndividual(MatriculaID)
 {
+    PeriodoID = document.getElementById("PeriodoID").value;
+    
     const calificacionModal = new bootstrap.Modal(document.getElementById('calificacionModal'), {
         backdrop : 'static'
     })
 
-    calificacionModal.show(M)
+    const data = {
+        PeriodoID    : PeriodoID,
+        MatriculaID  : MatriculaID
+    };
+    
+    const url = 'https://postgrado2.itsup.edu.ec/secretaria/estudiante/findcalificacionindividual';
+
+    fetch(url, {
+        method: 'POST', 
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), 
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log(data)
+        // document.getElementById("ModuloID").innerHTML = data; 
+
+        //calificacionModal.show(calificacionModal);
+
+    })
+    .catch(error => {
+    console.error('Error:', error); 
+    });
 
 }

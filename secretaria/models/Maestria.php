@@ -17,7 +17,7 @@
         {
             $db = new DB();
 
-            $prepare = $db->prepare("SELECT E.EstudianteID, E.NumeroIdentificacion, CONCAT(E.Apellido1, ' ', E.Apellido2)AS Apellidos, CONCAT(E.Nombre1, ' ', E.Nombre2)AS Nombres, E.Correo, E.Telefono
+            $prepare = $db->prepare("SELECT M.MatriculaID, E.EstudianteID, E.NumeroIdentificacion, CONCAT(E.Apellido1, ' ', E.Apellido2)AS Apellidos, CONCAT(E.Nombre1, ' ', E.Nombre2)AS Nombres, E.Correo, E.Telefono
                                      FROM Matricula M 
                                         INNER JOIN Estudiante E ON M.EstudianteID = E.EstudianteID
                                      WHERE M.PeriodoID = :PeriodoID

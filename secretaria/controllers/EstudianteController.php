@@ -67,4 +67,20 @@
 
             view("estudiante.datospersonales", ["datosestudiante" => $datosestudiante, "datospersonales" => $datospersonales, "datosmedicos" => $datosmedicos, "datoscontacto" => $datoscontacto, "datosfamiliares" => $datosfamiliares]);
         }
+
+        public function findcalificacionindividual()
+        {
+            $data = json_decode(file_get_contents('php://input'));
+
+            $PeriodoID = Main::limpiar_cadena($data->PeriodoID);
+            $MatriculaID = Main::limpiar_cadena($data->MatriculaID);
+
+            // $PeriodoID = Main::decryption($PeriodoID);
+            // $MatriculaID = Main::decryption($MatriculaID);
+
+            $param = [":PeriodoID" => $PeriodoID, ":MatriculaID" => $MatriculaID];
+
+            echo json_encode($param);
+        }
+
     }
