@@ -96,5 +96,47 @@
 
             echo json_encode($thead . $tbody . $tfoot);
         }
+
+        public function calificacionesgrupales()
+        {
+            $periodo = Periodo::findPeriodoActivo();
+            $maestria = Maestria::findMaestriaAll();
+
+            view('reporte.calificacionesgrupales', ["periodo" => $periodo, "maestria" => $maestria]);            
+        }
+
+        public function findmaestriaperiodoid()
+        {
+            $PeriodoID = Main::limpiar_cadena($_POST["PeriodoID"]); 
+            $PeriodoID = Main::decryption($PeriodoID);            
+
+            $param = [":PeriodoID" =>$PeriodoID];
+            $resp = Maestria::findMaestriaPeriodoID($param);
+
+            $thead = '<table class="table table-condensed" style="font-size:0.9em; width:100%">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Módulo</th>                                
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+            $tbody = '';
+
+            foreach ($resp as $row) {
+                $tbody .= '<tr>
+                            <td class="text-center" style="width:10%">'.$row->NumeroIdentificacion.'</td>
+                            <td>'.$row->Apellidos.'</td>
+                            <td>'.$row->Nombres.'</td>                            
+                            <td  class="text-center" style="width:25%"><button id="'.Main::encryption($row->MatriculaID).'" value="'.$row->Apellidos.' '.$row->Nombres.'" onclick="calIndividual(this.id, this.value)" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></button></td>
+                          </tr>';
+            }
+
+            $tfoot = '</tbody>
+                    </table>';
+
+            echo json_encode($thead . $tbody . $tfoot);
+        }
     }
     
