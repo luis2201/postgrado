@@ -62,6 +62,21 @@
             return $prepare->execute($param);
         }
 
+        public static function findCalificacionIndividual($params)
+        {
+            $db = new DB();
+
+            $prepare = $db->prepare("SELECT M.NombreModulo, C.Docencia, C.Practicas, C.Actividades, C.Resultados, C.Total, C.Asistencia
+                                    FROM Calificacion C 
+                                        INNER JOIN DocenteModulo DM ON C.DocenteModuloID = DM.DocenteModuloID
+                                        INNER JOIN Modulo M ON DM.ModuloID = M.ModuloID
+                                    WHERE C.MatriculaID = :MatriculaID");
+
+            $prepare->execute($params);
+
+            return $prepare->fetchAll(PDO::FETCH_CLASS, Estudiante::class);
+        }
+
     }
 
 ?>

@@ -87,7 +87,7 @@
                             <td class="text-center" style="width:10%">'.$row->NumeroIdentificacion.'</td>
                             <td>'.$row->Apellidos.'</td>
                             <td>'.$row->Nombres.'</td>                            
-                            <td  class="text-center" style="width:25%"><button id="'.Main::encryption($row->MatriculaID).'" onclick="calIndividual(this.id)" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></button></td>
+                            <td  class="text-center" style="width:25%"><button id="'.Main::encryption($row->MatriculaID).'" value="'.$row->Apellidos.' '.$row->Nombres.'" onclick="calIndividual(this.id, this.value)" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></button></td>
                           </tr>';
             }
 

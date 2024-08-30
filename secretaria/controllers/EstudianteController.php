@@ -72,15 +72,46 @@
         {
             $data = json_decode(file_get_contents('php://input'));
 
-            $PeriodoID = Main::limpiar_cadena($data->PeriodoID);
             $MatriculaID = Main::limpiar_cadena($data->MatriculaID);
+            $MatriculaID = Main::decryption($MatriculaID);
 
-            // $PeriodoID = Main::decryption($PeriodoID);
-            // $MatriculaID = Main::decryption($MatriculaID);
+            $param = [":MatriculaID" => $MatriculaID];
+            $resp = Estudiante::findCalificacionIndividual($param); 
 
-            $param = [":PeriodoID" => $PeriodoID, ":MatriculaID" => $MatriculaID];
+            $i = 1;
+            $thead = '<table class="table table-condensed" style="font-size:0.9em; width:100%">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Módulo</th>
+                                <th class="text-center">Docencia</th>                                
+                                <th class="text-center">Prácticas</th>
+                                <th class="text-center">Actividades</th>
+                                <th class="text-center">Resultados</th>
+                                <th class="text-center">Total</th>
+                                <th class="text-center">Asistencia</th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+            $tbody = '';
 
-            echo json_encode($param);
+            foreach ($resp as $row) {
+                $tbody .= '<tr>
+                            <td class="text-center" style="width:10%">'.$i++.'</td>
+                            <td>'.$row->NombreModulo.'</td>
+                            <td class="text-center">'.$row->Docencia.'</td>
+                            <td class="text-center">'.$row->Practicas.'</td>
+                            <td class="text-center">'.$row->Actividades.'</td>
+                            <td class="text-center">'.$row->Resultados.'</td>
+                            <td class="text-center">'.$row->Total.'</td>
+                            <td class="text-center">'.$row->Asistencia.'</td>
+                           </tr>';
+            }
+
+            $tfoot = '</tbody>
+                    </table>';
+
+            echo json_encode($thead . $tbody . $tfoot);
         }
 
     }

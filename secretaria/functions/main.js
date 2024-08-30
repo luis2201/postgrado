@@ -215,9 +215,10 @@ cmbMaestriaID.addEventListener("change", function(){
   
 });
 
-function calIndividual(MatriculaID)
+function calIndividual(MatriculaID, Estudiante)
 {
     PeriodoID = document.getElementById("PeriodoID").value;
+    document.getElementById("tbCalificaciones").innerHTML = "";
     
     const calificacionModal = new bootstrap.Modal(document.getElementById('calificacionModal'), {
         backdrop : 'static'
@@ -239,10 +240,10 @@ function calIndividual(MatriculaID)
     })
     .then(response => response.json())
     .then(data => {
-        console.log(data)
-        // document.getElementById("ModuloID").innerHTML = data; 
+        document.getElementById('calificacionModalLabel').innerHTML = Estudiante;
+        document.getElementById("tbCalificaciones").innerHTML = data; 
 
-        //calificacionModal.show(calificacionModal);
+        calificacionModal.show(calificacionModal);
 
     })
     .catch(error => {
