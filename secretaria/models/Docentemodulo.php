@@ -28,4 +28,14 @@
             return $prepare->execute($param);
         }
 
+        public static function findDocenteModuloID($param)
+        {
+            $db = new DB();
+
+            $prepare = $db->prepare("SELECT * FROM DocenteModulo WHERE PeriodoID = :PeriodoID AND ModuloID = :ModuloID;");
+            $prepare->execute($param);
+
+            return $prepare->fetchAll(PDO::FETCH_CLASS, Docente::class);
+        }
+
     }

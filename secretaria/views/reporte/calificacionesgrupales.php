@@ -9,9 +9,9 @@
         <h5>Criterios de Búsqueda</h5>
     </div>
     <div class="card-body p-3">
-        <form class ="needs-validation" action="<?php echo DIR; ?>reporte/findmaestriaperiodoid" method="post" data-action="select" enctype="multipart/form-data" autocomplete="off" novalidate>
+        <form class ="needs-validation" action="<?php echo DIR; ?>reporte/findestudiantesreportegrupal" method="post" data-action="select" enctype="multipart/form-data" autocomplete="off" novalidate>
             <div class="row">
-                <div class="col-11">
+                <div class="col-2">
                     <label for="PeriodoID">Periodo Académico</label>
                     <select name="PeriodoID" id="PeriodoID" class="form-select" aria-describedby="inputGroupPrepend" required>
                         <?php foreach($periodo as $row): ?>
@@ -19,6 +19,16 @@
                         <?php endforeach; ?>
                     </select>
                     <div class="invalid-feedback">Seleccione Periodo Académico</div>
+                </div>
+                <div class="col-9">
+                    <label for="MaestriaID">Oferta Académica</label>
+                    <select name="MaestriaID" id="MaestriaID" class="form-select" aria-describedby="inputGroupPrepend" required>
+                        <option value="">-- Seleccione Oferta Académica --</option>
+                        <?php foreach($maestria as $row): ?>
+                            <option value="<?php echo Main::encryption($row->MaestriaID); ?>"><?php echo $row->NombreMaestria; ?></option>
+                        <?php endforeach; ?>
+                    </select>
+                    <div class="invalid-feedback">Seleccione Oferta Académica</div>
                 </div>
                 <div class="col-1">
                     <label for=""></label>

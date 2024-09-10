@@ -138,5 +138,50 @@
 
             echo json_encode($thead . $tbody . $tfoot);
         }
+
+        public function findestudiantesreportegrupal()
+        {
+            $PeriodoID = Main::limpiar_cadena($_POST["PeriodoID"]);
+            $MaestriaID = Main::limpiar_cadena($_POST["MaestriaID"]);
+
+            $PeriodoID = Main::decryption($PeriodoID);
+            $MaestriaID = Main::decryption($MaestriaID);
+
+            $param = [":PeriodoID" =>$PeriodoID, ":MaestriaID" => $MaestriaID];
+            $resp = Modulo::findModulosMaestriaID($param);
+
+            $thead = '<table id="tbNomina" class="table table-condensed table-hover table-striped" style="font-size:0.9em; width:100%">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Módulo</th>
+                                <th class="text-center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>';
+            $tbody = '';
+            $n = 1;
+            foreach ($resp as $row) {
+                $param = [":PeriodoID" => $PeriodoID, ":ModuloID" => $row->ModuloID];
+                print_r($param);
+                // $docentemodulo = Docente::findDocenteModuloID($param);
+                
+                // foreach ($docentemodulo as $id) {
+                //     $DocenteModuloID = $id->DocenteModuloID;
+                // }
+
+                $estado = ($row->Estado == 1)?'<span class="badge text-bg-success fw-bolder">ACTIVADO</span>':'<span class="badge text-bg-danger fw-bolder">DESACTIVADO</span>';
+                $tbody .= '<tr>
+                            <td class="text-center" style="width:10%">'.$n++.'</td>
+                            <td>'.$row->NombreModulo.'</td>
+                            <td  class="text-center" style="width:15%"><button id="'.($DocenteModuloID).'" onclick="calGrupal(this.id)" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></button></td>
+                          </tr>';
+            }
+
+            $tfoot = '</tbody>
+                    </table>';
+
+            echo json_encode($thead . $tbody . $tfoot);
+        }
     }
     
