@@ -48,3 +48,18 @@
         
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="calificacionModal" tabindex="-1" aria-labelledby="calificacionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-light">
+        <h3 class="modal-title fs-5" id="calificacionModalLabel"></h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="tbCalificaciones">
+        
+      </div>
+    </div>
+  </div>
+</div>

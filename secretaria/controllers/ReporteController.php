@@ -161,27 +161,26 @@
                         <tbody>';
             $tbody = '';
             $n = 1;
-            foreach ($resp as $row) {
+            foreach($resp as $row) {
                 $param = [":PeriodoID" => $PeriodoID, ":ModuloID" => $row->ModuloID];
-                print_r($param);
-                // $docentemodulo = Docente::findDocenteModuloID($param);
-                
-                // foreach ($docentemodulo as $id) {
-                //     $DocenteModuloID = $id->DocenteModuloID;
-                // }
+                $docentemodulo = Docentemodulo::findDocenteModuloID($param);
+          
+                foreach ($docentemodulo as $id) {
+                    $DocenteModuloID = $id->DocenteModuloID;
+                }
 
                 $estado = ($row->Estado == 1)?'<span class="badge text-bg-success fw-bolder">ACTIVADO</span>':'<span class="badge text-bg-danger fw-bolder">DESACTIVADO</span>';
                 $tbody .= '<tr>
                             <td class="text-center" style="width:10%">'.$n++.'</td>
                             <td>'.$row->NombreModulo.'</td>
-                            <td  class="text-center" style="width:15%"><button id="'.($DocenteModuloID).'" onclick="calGrupal(this.id)" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></button></td>
+                            <td  class="text-center" style="width:15%"><button id="'.Main::encryption($DocenteModuloID).'" onclick="calGrupal(this.id)" class="btn btn-primary btn-sm"><i class="fa-solid fa-eye"></i></button></td>
                           </tr>';
             }
 
             $tfoot = '</tbody>
                     </table>';
 
-            echo json_encode($thead . $tbody . $tfoot);
+           echo json_encode($thead . $tbody . $tfoot);
         }
     }
     

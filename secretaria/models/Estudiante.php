@@ -77,6 +77,24 @@
             return $prepare->fetchAll(PDO::FETCH_CLASS, Estudiante::class);
         }
 
+        public static function findCalificacionGrupal($params)
+        {
+            $db = new DB();
+
+            $prepare = $db->prepare("SELECT C.MatriculaID, CONCAT(E.Apellido1,' ', E.Apellido2,' ', E.Nombre1,' ', E.Nombre2)AS Estudiante, 
+                                            C.Docencia, C.Practicas, C.Actividades, C.Resultados, C.Total, C.Asistencia
+                                    FROM Calificacion C
+                                        INNER JOIN Matricula M ON C.MatriculaID = M.MatriculaID
+                                        INNER JOIN Estudiante E ON M.EstudianteID = E.EstudianteID
+                                        INNER JOIN DocenteModulo T ON C.DocenteModuloID = T.DocenteModuloID
+                                    WHERE C.DocenteModuloID = :DocenteModuloID
+                                    ORDER BY E.Apellido1, E.Apellido2, E.Nombre1, E.Nombre2");
+
+            $prepare->execute($params);
+
+            return $prepare->fetchAll(PDO::FETCH_CLASS, Estudiante::class);
+        }
+
     }
 
 ?>
