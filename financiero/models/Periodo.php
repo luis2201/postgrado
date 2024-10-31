@@ -2,7 +2,16 @@
 
     class Periodo extends DB
     {
+        public static function findPeriodoAll()
+        {
+            $db = new DB();
 
+            $prepare = $db->prepare("SELECT * FROM Periodo;");
+            $prepare->execute();
+
+            return $prepare->fetchAll(PDO::FETCH_CLASS, Periodo::class);
+        }
+        
         public static function findPeriodoActivo()
         {
             $db = new DB();
