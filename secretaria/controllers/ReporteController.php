@@ -5,7 +5,7 @@
         
         public function listaporoferta()
         {
-            $periodo = Periodo::findPeriodoActivo();
+            $periodo = Periodo::findAll();
             $maestria = Maestria::findMaestriaAll();
 
             view('reporte.listaporoferta', ["periodo" => $periodo, "maestria" => $maestria]);
@@ -53,7 +53,7 @@
 
         public function calificacionesindividuales()
         {
-            $periodo = Periodo::findPeriodoActivo();
+            $periodo = Periodo::findAll();
             $maestria = Maestria::findMaestriaAll();
 
             view('reporte.calificacionesindividuales', ["periodo" => $periodo, "maestria" => $maestria]);
@@ -99,7 +99,7 @@
 
         public function calificacionesgrupales()
         {
-            $periodo = Periodo::findPeriodoActivo();
+            $periodo = Periodo::findAll();
             $maestria = Maestria::findMaestriaAll();
 
             view('reporte.calificacionesgrupales', ["periodo" => $periodo, "maestria" => $maestria]);            

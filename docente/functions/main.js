@@ -262,3 +262,28 @@ function enviarDatos(DocenteModuloID, id, valor, total, asistencia) {
         console.error('Error:', error);
     });
 }
+
+function cargaModulos(selectElement) {
+    const PeriodoID = selectElement.value; 
+    if (PeriodoID) {
+        const data = {
+            PeriodoID:PeriodoID
+        }
+        fetch('docentemodulo/finddocentemodulo', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(data => {
+            document.getElementById("tabla").innerHTML = data;
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+        });
+    } else {
+
+    }
+}
