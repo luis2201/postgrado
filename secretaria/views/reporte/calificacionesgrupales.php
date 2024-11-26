@@ -14,7 +14,10 @@
                 <div class="col-2">
                     <label for="PeriodoID">Periodo Académico</label>
                     <select name="PeriodoID" id="PeriodoID" class="form-select" aria-describedby="inputGroupPrepend" required>
+<<<<<<< HEAD
                         <option value="">-- Periodo --</option>
+=======
+>>>>>>> a5a759b66eccb21380053dfa89c3c90933fdab91
                         <?php foreach($periodo as $row): ?>
                             <option value="<?php echo Main::encryption($row->PeriodoID); ?>"><?php echo $row->NombrePeriodo; ?></option>
                         <?php endforeach; ?>

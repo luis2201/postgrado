@@ -99,7 +99,11 @@
 
         public function calificacionesgrupales()
         {
+<<<<<<< HEAD
             $periodo = Periodo::findAll();
+=======
+            $periodo = Periodo::findPeriodoActivo();
+>>>>>>> a5a759b66eccb21380053dfa89c3c90933fdab91
             $maestria = Maestria::findMaestriaAll();
 
             view('reporte.calificacionesgrupales', ["periodo" => $periodo, "maestria" => $maestria]);            
