@@ -21,6 +21,17 @@
                                     <a class="nav-link" href="<?php echo DIR; ?>datos">Actualizar Datos</a>
                                 </nav>
                             </div>
+                            <!-- Calificaciones -->
+                            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseCalificaciones" aria-expanded="false" aria-controls="collapseCalificaciones">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-list-check"></i></div>
+                                Calificaciones
+                                <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+                            </a>
+                            <div class="collapse" id="collapseCalificaciones" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
+                                <nav class="sb-sidenav-menu-nested nav">
+                                    <a class="nav-link" href="<?php echo DIR; ?>calificaciones">Reporte General</a>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                     <div class="sb-sidenav-footer">

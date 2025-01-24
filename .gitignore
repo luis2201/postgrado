@@ -23,3 +23,5 @@ docente/dompdf
 ##Estudiante
 estudiante/config/
 estudiante/models/DB.php
+
+script.sql

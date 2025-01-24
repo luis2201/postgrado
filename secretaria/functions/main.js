@@ -20,7 +20,6 @@ if (document.getElementById("tbLista")) {
             form.addEventListener('submit', function (event) {
                 event.preventDefault()
                 if (!form.checkValidity()) {
-                    // event.preventDefault()
                     event.stopPropagation()
                 } else {
 
@@ -63,7 +62,7 @@ if (document.getElementById("tbLista")) {
                         })
                         .then(data => {
                             let info = data;
-                            
+            
                             switch (dataAction) {
                                 case 'login':
                                     if (info) {
@@ -241,6 +240,45 @@ function calIndividual(MatriculaID, Estudiante)
     .then(response => response.json())
     .then(data => {
         document.getElementById('calificacionModalLabel').innerHTML = Estudiante;
+        document.getElementById("tbCalificaciones").innerHTML = data; 
+
+        calificacionModal.show(calificacionModal);
+
+    })
+    .catch(error => {
+    console.error('Error:', error); 
+    });
+
+}
+
+function calGrupal(DocenteModuloID)
+{
+    // document.getElementById("tbCalificaciones").innerHTML = "";
+    
+    const calificacionModal = new bootstrap.Modal(document.getElementById('calificacionModal'), {
+        backdrop : 'static'
+    })
+
+    const data = {
+        DocenteModuloID  : DocenteModuloID
+    };
+    
+    const url = 'https://postgrado2.itsup.edu.ec/secretaria/estudiante/findcalificaciongrupal';
+
+    fetch(url, {
+        method: 'POST', 
+        headers: {
+        'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data), 
+    })
+    .then(response => response.json())
+    .then(data => {
+        var selectElement = document.getElementById("MaestriaID");
+        var selectedIndex = selectElement.selectedIndex;
+        var selectedOptionText = selectElement.options[selectedIndex].text;
+
+        document.getElementById('calificacionModalLabel').innerHTML = selectedOptionText;
         document.getElementById("tbCalificaciones").innerHTML = data; 
 
         calificacionModal.show(calificacionModal);

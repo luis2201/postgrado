@@ -13,6 +13,16 @@
             return $prepare->fetchAll(PDO::FETCH_CLASS, Maestria::class);
         }
 
+        public static function findMaestriaPeriodoID()
+        {
+            $db = new DB();
+
+            $prepare = $db->prepare("SELECT * FROM Maestria WHERE EstadoMaestria = 1;");
+            $prepare->execute();
+
+            return $prepare->fetchAll(PDO::FETCH_CLASS, Maestria::class);
+        }
+
         public static function findEstudiantesMaestriaID($params)
         {
             $db = new DB();

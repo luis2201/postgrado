@@ -5,7 +5,7 @@
 
         public function index()
         {
-            $periodo = Periodo::findPeriodoActivo();
+            $periodo = Periodo::findAll();
             $maestria = Maestria::findMaestriaAll();    
             $docente = Docente::findAll();    
             $docentemodulo = Docentemodulo::findAll();

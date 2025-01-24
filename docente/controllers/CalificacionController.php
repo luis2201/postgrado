@@ -5,25 +5,21 @@
 
         public function index()
         {
-            $periodo = Periodo::findPeriodoActivo();
-            foreach($periodo as $row){
-                $PeriodoID = $row->PeriodoID;
-            }
+            unset($_SESSION['PSeleccionado']);
 
-            $DocenteID = Main::decryption($_SESSION["DocenteID"]);
+            $periodos = Periodo::findAll();
 
-            $param = [":PeriodoID" => $PeriodoID, ":DocenteID" => $DocenteID];
-            $docentemodulo =  Docentemodulo::findDocenteIDModuloID($param);
-
-            view("calificacion.index", ["docentemodulo" => $docentemodulo]);
+            view("calificacion.index", ["periodos" => $periodos]);
         }
 
         public function register()
         {
-            $periodo = Periodo::findPeriodoActivo();
-            foreach($periodo as $row){
-                $PeriodoID = $row->PeriodoID;
-            }
+            // $periodo = Periodo::findPeriodoActivo();
+            // foreach($periodo as $row){
+            //     $PeriodoID = $row->PeriodoID;
+            // }
+
+            $PeriodoID = Main::decryption($_SESSION["PSeleccionado"]);
 
             $DocenteModuloID = Main::decryption($_GET["id"]);
 
@@ -60,10 +56,12 @@
 
         public function reporte()
         {
-            $periodo = Periodo::findPeriodoActivo();
-            foreach($periodo as $row){
-                $PeriodoID = $row->PeriodoID;
-            }
+            // $periodo = Periodo::findPeriodoActivo();
+            // foreach($periodo as $row){
+            //     $PeriodoID = $row->PeriodoID;
+            // }
+
+            $PeriodoID = Main::decryption($_SESSION["PSeleccionado"]);
 
             $DocenteModuloID = Main::decryption($_GET["id"]);
 

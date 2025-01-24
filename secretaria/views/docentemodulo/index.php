@@ -69,24 +69,24 @@
         Lista de Docentes por Módulos
     </div>
     <div class="card-body">
-        <table id="tbLista" class="table table-hover table-condensed table-striped">
+        <table id="tbLista" class="table table-hover table-condensed table-striped" style="font-size:0.8vw;">
             <thead>
                 <tr>
                     <th>Oferta Académica</th>
+                    <th>Periodo</th>
                     <th>Módulo</th>
                     <th>Docente</th>
-                    <th>No. Horas</th>
-                    <th></th>
+                    <th>No.Horas</th>
                 </tr>
             </thead>
             <tbody>
             <?php foreach($docentemodulo as $row): ?>
                 <tr>
                     <td><?php echo $row->NombreMaestria; ?></td>
+                    <td class="text-center"><?php echo $row->NombrePeriodo; ?></td>
                     <td><?php echo $row->NombreModulo; ?></td>
                     <td><?php echo $row->NombreDocente; ?></td>
-                    <td><?php echo $row->NumeroHoras; ?></td>
-                    <td></td>
+                    <td class="text-center"><?php echo $row->NumeroHoras; ?></td>
                 </tr>
             <?php endforeach; ?>
             </tbody>

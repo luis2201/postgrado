@@ -1,7 +1,7 @@
-<h1 class="mt-4">Estudiantes</h1>
+<h1 class="mt-4">Reportes</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a href="index.html">Estudiantes</a></li>
-    <li class="breadcrumb-item active">Reset Contraseña</li>
+    <li class="breadcrumb-item"><a href="index.html">Reportes</a></li>
+    <li class="breadcrumb-item active">Reporte de Calificaciones por Oferta Académica</li>
 </ol>
 
 <div class="card">
@@ -9,11 +9,12 @@
         <h5>Criterios de Búsqueda</h5>
     </div>
     <div class="card-body p-3">
-        <form class ="needs-validation" action="<?php echo DIR; ?>maestria/findestudiantesmaestriaid" method="post" data-action="select" enctype="multipart/form-data" autocomplete="off" novalidate>
+        <form class ="needs-validation" action="<?php echo DIR; ?>reporte/findestudiantesreportegrupal" method="post" data-action="select" enctype="multipart/form-data" autocomplete="off" novalidate>
             <div class="row">
                 <div class="col-2">
                     <label for="PeriodoID">Periodo Académico</label>
                     <select name="PeriodoID" id="PeriodoID" class="form-select" aria-describedby="inputGroupPrepend" required>
+                        <option value="">-- Periodo --</option>
                         <?php foreach($periodo as $row): ?>
                             <option value="<?php echo Main::encryption($row->PeriodoID); ?>"><?php echo $row->NombrePeriodo; ?></option>
                         <?php endforeach; ?>
@@ -39,13 +40,27 @@
     </div>
 </div>
 
-
 <div class="card mt-2 mb-4">
     <div class="card-header">
         <i class="fas fa-table me-1"></i>
-        Lista de Estudiantes por Oferta Académica
+        Lista de Módulos por Periodo
     </div>
     <div id="tabla" class="card-body">
         
     </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="calificacionModal" tabindex="-1" aria-labelledby="calificacionModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+      <div class="modal-header bg-primary text-light">
+        <h3 class="modal-title fs-5" id="calificacionModalLabel"></h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="tbCalificaciones">
+        
+      </div>
+    </div>
+  </div>
 </div>

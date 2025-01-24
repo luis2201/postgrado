@@ -5,7 +5,7 @@
 
         public function index()
         {
-            $periodo = Periodo::findPeriodoActivo();
+            $periodo = Periodo::findPeriodoAll();
             $maestria = Maestria::findMaestriaAll();
 
             view("reporte.index", ["periodo" => $periodo, "maestria" => $maestria]);
@@ -52,3 +52,4 @@
         }
 
     }
+

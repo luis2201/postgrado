@@ -1,7 +1,7 @@
-<h1 class="mt-4">Estudiantes</h1>
+<h1 class="mt-4">Reportes</h1>
 <ol class="breadcrumb mb-4">
-    <li class="breadcrumb-item"><a href="index.html">Estudiantes</a></li>
-    <li class="breadcrumb-item active">Reset Contraseña</li>
+    <li class="breadcrumb-item"><a href="index.html">Reportes</a></li>
+    <li class="breadcrumb-item active">Reporte de Calificaciones por Oferta Académica</li>
 </ol>
 
 <div class="card">
@@ -9,7 +9,7 @@
         <h5>Criterios de Búsqueda</h5>
     </div>
     <div class="card-body p-3">
-        <form class ="needs-validation" action="<?php echo DIR; ?>maestria/findestudiantesmaestriaid" method="post" data-action="select" enctype="multipart/form-data" autocomplete="off" novalidate>
+        <form class ="needs-validation" action="<?php echo DIR; ?>reporte/findestudiantesmaestriaid" method="post" data-action="select" enctype="multipart/form-data" autocomplete="off" novalidate>
             <div class="row">
                 <div class="col-2">
                     <label for="PeriodoID">Periodo Académico</label>

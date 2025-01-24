@@ -5,7 +5,7 @@
         
         public function index()
         {
-            $periodo = Periodo::findPeriodoActivo();
+            $periodo = Periodo::findAll();
             $maestria = Maestria::findMaestriaAll();
 
             view("modulo.index", ["periodo" => $periodo, "maestria" => $maestria]);
@@ -61,7 +61,7 @@
 
         public function agregar()
         {
-            $periodo = Periodo::findPeriodoActivo();
+            $periodo = Periodo::findAll();
             $maestria = Maestria::findMaestriaAll();
 
             view("modulo.agregar", ["periodo" => $periodo, "maestria" => $maestria]);
@@ -90,7 +90,7 @@
             $param = [":ModuloID" => $ModuloID];
 
             $modulo = Modulo::findModuloID($param);
-            $periodo = Periodo::findPeriodoActivo();
+            $periodo = Periodo::findAll();
             $maestria = Maestria::findMaestriaAll();
 
             view("modulo.edit", ["modulo" => $modulo, "periodo" => $periodo, "maestria" => $maestria]);
