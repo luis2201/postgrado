@@ -8,9 +8,6 @@ administrador/models/DB.php
 financiero/config/
 financiero/models/DB.php
 
-financiero/config/
-financiero/models/DB.php
-
 ##Secretaria
 secretaria/config/
 secretaria/models/DB.php
