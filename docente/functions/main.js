@@ -192,24 +192,49 @@ function actualizarTotal(MatriculaID) {
     let practicas = parseFloat(document.getElementById(`Practicas-${MatriculaID}`).value) || 0;
     let actividades = parseFloat(document.getElementById(`Actividades-${MatriculaID}`).value) || 0;
     let resultados = parseFloat(document.getElementById(`Resultados-${MatriculaID}`).value) || 0;
-    let total = docencia + practicas + actividades + resultados;
     let supletorio = parseFloat(document.getElementById(`Supletorio-${MatriculaID}`).value) || 0;
 
-    if(total>=50 && total<70) {
+    let total = docencia + practicas + actividades + resultados;
+
+    // Condición para habilitar o deshabilitar el campo supletorio
+    if (total >= 50 && total < 70) {
         document.getElementById(`Supletorio-${MatriculaID}`).disabled = false;
-    } else{
+    } else {
         document.getElementById(`Supletorio-${MatriculaID}`).value = "";
+        supletorio = 0; // Resetear supletorio si está deshabilitado
         document.getElementById(`Supletorio-${MatriculaID}`).disabled = true;
     }
 
-    if (total >= 56 && total < 70 && supletorio >= 14 && supletorio <= 20) {
-        total = 70; // Ajustar total a 70
+    // Sumar supletorio al total
+    let totalConSupletorio = total + supletorio;
+
+    // Reglas basadas en la tabla
+    if (total >= 70) {
+        // Aprobación directa
+        totalConSupletorio = total;
+    } else if (total >= 56 && total < 70 && supletorio >= 14 && supletorio <= 20) {
+        // Si está en rango y supletorio es válido, ajustar a 70
+        totalConSupletorio = 70;
+    } else if (total >= 50 && total < 56 && supletorio >= (70 - total) && supletorio <= 20) {
+        // Caso general: total + supletorio debe ser al menos 70
+        totalConSupletorio = 70;
+    } else if (total < 50) {
+        // No hay opción a supletorio
+        supletorio = 0;
+        totalConSupletorio = total; // Mantener total base
     }
 
-    document.getElementById(`Total-${MatriculaID}`).value = total.toFixed(2);
-    
-    return total.toFixed(2);
+    // Actualizar los valores en los campos correspondientes
+    document.getElementById(`Total-${MatriculaID}`).value = totalConSupletorio.toFixed(2);
+
+    if(totalConSupletorio>=70){
+        
+    }
+
+    return totalConSupletorio.toFixed(2);
 }
+
+
 
 function limitarDecimales(event, maxValue) {
     let valor = parseFloat(event.target.value);

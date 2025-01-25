@@ -33,6 +33,7 @@
                             <th class="text-wrap">Total</th>
                             <th class="text-wrap">Supletorio</th>
                             <th class="text-wrap">Asistencia 100%</th>
+                            <th class=""></th>
                         </tr>
                     </thead>
                     <tbody style="font-size:0.8vw">
@@ -84,6 +85,17 @@
                                 </td>
                                 <td class="text-center border" style="width:90px;">
                                     <input type="number" step="0.01" id="Asistencia-<?php echo $row->MatriculaID; ?>" name="Asistencia-<?php echo $row->MatriculaID; ?>" class="border-bottom border-dark text-center" style="border-style:none;width:90px;" min="0" max="100" oninput="limitarDecimales(event, 100); actualizarTotal(<?php echo $row->MatriculaID; ?>)" onfocus="guardarValorAnterior(event)" onblur="formatearDecimales(event, 100)" value="<?php echo $Asistencia; ?>">
+                                </td>
+                                <td id="Observacion" class="text-center border">
+                                    <?php
+                                        if($Total != ''){
+                                            if($Total>=70){
+                                                echo '<i class="fa-regular fa-circle-check text-success"></i>'; 
+                                            } else{
+                                                echo '<i class="fa-solid fa-ban text-danger"></i>';
+                                            }
+                                        } 
+                                    ?>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
