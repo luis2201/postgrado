@@ -31,6 +31,7 @@
                             <th class="text-wrap">Actividades de Aprendizaje (20%)</th>
                             <th class="text-wrap">Resultados (30%)</th>
                             <th class="text-wrap">Total</th>
+                            <th class="text-wrap">Supletorio</th>
                             <th class="text-wrap">Asistencia 100%</th>
                         </tr>
                     </thead>
@@ -56,6 +57,7 @@
                                     $Actividades = $calificacion->Actividades;
                                     $Resultados = $calificacion->Resultados;
                                     $Total = $calificacion->Total; 
+                                    $Supletorio = $calificacion->Supletorio; 
                                     $Asistencia = $calificacion->Asistencia; 
                                 }
                             ?>
@@ -76,6 +78,9 @@
                                 </td>
                                 <td class="text-center border" style="width:90px;">
                                     <input type="number" step="0.01" id="Total-<?php echo $row->MatriculaID; ?>" name="Total-<?php echo $row->MatriculaID; ?>" class="bg-info bg-opacity-10 border border-info rounded text-center" style="border-style:none;margin:auto;width:80px;" value="<?php echo $Total; ?>" disabled>
+                                </td>
+                                <td class="text-center border" style="width:90px;">
+                                <input type="number" step="0.01" id="Supletorio-<?php echo $row->MatriculaID; ?>" name="Supletorio-<?php echo $row->MatriculaID; ?>" class="border-bottom border-dark text-center" style="border-style:none;width:90px;" min="0" max="20" oninput="limitarDecimales(event, 20); actualizarTotal(<?php echo $row->MatriculaID; ?>)" onfocus="guardarValorAnterior(event)" onblur="formatearDecimales(event, 20)" value="<?php echo $Supletorio; ?>" <?php echo (($Total>=50 && $Total<=70) && $Supletorio!='')?'':'disabled'; ?>>
                                 </td>
                                 <td class="text-center border" style="width:90px;">
                                     <input type="number" step="0.01" id="Asistencia-<?php echo $row->MatriculaID; ?>" name="Asistencia-<?php echo $row->MatriculaID; ?>" class="border-bottom border-dark text-center" style="border-style:none;width:90px;" min="0" max="100" oninput="limitarDecimales(event, 100); actualizarTotal(<?php echo $row->MatriculaID; ?>)" onfocus="guardarValorAnterior(event)" onblur="formatearDecimales(event, 100)" value="<?php echo $Asistencia; ?>">

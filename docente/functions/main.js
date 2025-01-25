@@ -193,7 +193,21 @@ function actualizarTotal(MatriculaID) {
     let actividades = parseFloat(document.getElementById(`Actividades-${MatriculaID}`).value) || 0;
     let resultados = parseFloat(document.getElementById(`Resultados-${MatriculaID}`).value) || 0;
     let total = docencia + practicas + actividades + resultados;
+    let supletorio = parseFloat(document.getElementById(`Supletorio-${MatriculaID}`).value) || 0;
+
+    if(total>=50 && total<70) {
+        document.getElementById(`Supletorio-${MatriculaID}`).disabled = false;
+    } else{
+        document.getElementById(`Supletorio-${MatriculaID}`).value = "";
+        document.getElementById(`Supletorio-${MatriculaID}`).disabled = true;
+    }
+
+    if (total >= 56 && total < 70 && supletorio >= 14 && supletorio <= 20) {
+        total = 70; // Ajustar total a 70
+    }
+
     document.getElementById(`Total-${MatriculaID}`).value = total.toFixed(2);
+    
     return total.toFixed(2);
 }
 
