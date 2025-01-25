@@ -138,6 +138,7 @@
                     <th class="text-wrap">Actividades de Aprendizaje (20%)</th>
                     <th class="text-wrap">Resultados (30%)</th>
                     <th class="text-wrap">Total</th>
+                    <th class="text-wrap">Supletorio</th>
                     <th class="text-wrap">Asistencia 100%</th>
                     <th class="text-wrap">Observación</th>
                 </tr>
@@ -156,6 +157,7 @@
                         $Actividades = "";
                         $Resultados = "";
                         $Total = "";
+                        $Supletorio = "";
                         $Asistencia = "";
 
                         foreach ($resp as $calificacion) {
@@ -164,6 +166,7 @@
                             $Actividades = $calificacion->Actividades;
                             $Resultados = $calificacion->Resultados;
                             $Total = $calificacion->Total;
+                            $Supletorio = $calificacion->Supletorio;
                             $Asistencia = $calificacion->Asistencia;
                         }
                         ?>
@@ -184,6 +187,9 @@
                         </td>
                         <td style="width:5%; text-align:center">
                             <?php echo $Total; ?>
+                        </td>
+                        <td style="width:5%; text-align:center">
+                            <?php echo $Supletorio; ?>
                         </td>
                         <td style="width:5%; text-align:center">
                             <?php echo $Asistencia; ?>
