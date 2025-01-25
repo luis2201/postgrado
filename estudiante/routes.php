@@ -8,6 +8,7 @@ include_once "models/DB.php";
 include_once "models/Main.php";
 include_once "models/Estudiante.php";
 include_once "models/Periodo.php";
+include_once "models/Calificaciones.php";
 
 $controller = ucfirst($_GET['controller']);
 

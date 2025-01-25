@@ -24,8 +24,9 @@ class LoginController
         if(count($resp) > 0){
             foreach ($resp as $row) {
                 $_SESSION['EstudianteID'] = $row->EstudianteID;
-                $_SESSION['Estudiante'] = $row->Nombre1 .' '. $row->Apellido1 .' '. $row->Apellido2;
+                $_SESSION['Estudiante'] = $row->EstudianteNombres;
                 $_SESSION['NumeroIdentificacion'] = $row->NumeroIdentificacion;
+                $_SESSION['MatriculaID'] = Main::encryption($row->MatriculaID);
             }
 
             $flag = true;

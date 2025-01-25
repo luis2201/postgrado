@@ -7,7 +7,11 @@
         {
             $db = new DB();
 
-            $prepare = $db->prepare("SELECT * FROM Estudiante WHERE NumeroIdentificacion = :NumeroIdentificacion AND Contrasena = :Contrasena");
+            $prepare = $db->prepare("SELECT E.EstudianteID, CONCAT(E.Nombre1, ' ', E.Nombre2, ' ', E.Apellido1, ' ', E.Apellido2)AS EstudianteNombres, E.NumeroIdentificacion, M.MatriculaID
+                                    FROM Matricula M
+                                        INNER JOIN Estudiante E ON M.EstudianteID = E.EstudianteID
+                                    WHERE E.NumeroIdentificacion = :NumeroIdentificacion
+                                    AND E.Contrasena = :Contrasena;");
             $prepare->execute($param);
 
             return $prepare->fetchAll(PDO::FETCH_CLASS, Estudiante::class);
